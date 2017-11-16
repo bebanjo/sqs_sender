@@ -6,10 +6,11 @@ gem 'rake'
 
 gem 'pry-byebug'
 
-gem 'aws-sdk-v1'
+gem 'aws-sdk'
 
 gem "nokogiri"
 
 group :test do
   gem 'rspec'
+  gem 'pry-byebug'
 end

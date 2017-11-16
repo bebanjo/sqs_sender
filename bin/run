@@ -6,7 +6,11 @@ $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 require 'sqsender/runner'
 
 begin
-  Emaa::Runner.new.run
+  if ARGV.empty?
+    puts "ERROR: missing param with filename located on upload folder"
+  else
+    Sqsender::Runner.new(ARGV.first).run
+  end
 rescue => e
   STDERR.puts e.message
   STDERR.puts e.backtrace.join("\n")

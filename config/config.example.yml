@@ -1,7 +1,13 @@
+# Get this data from WARG
+
 default: &default
   access_key_id:
   secret_access_key:
   region: eu-west-1
+  queue_url: https://sqs.eu-west-1.amazonaws.com/xxxxxxxx/
+  queue_name: disney_rights
+  bucket: bebanjo-warg-dev
+  s3_endpoint: s3-eu-west-1.amazonaws.com
 
 development:
   <<: *default

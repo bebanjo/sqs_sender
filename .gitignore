@@ -1,2 +1,4 @@
 log
 config/config.yml
+config/aws.yml
+upload/*
