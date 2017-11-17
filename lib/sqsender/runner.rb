@@ -10,10 +10,11 @@ module Sqsender
     end
 
     def run
-      sqs_message = {"id" => 5_555_555, "timestamp" => Time.current.strftime('%Y-%m-%dT%H:%M:%SZ'), "payload" => upload_file }
-      response = sqs_queue.send_message({queue_url: queue_url, message_body: sqs_message.inspect})
+      timestamp = Time.current.strftime('%Y-%m-%dT%H:%M:%SZ')
+      sqs_message = "{\"timestamp\" => \"#{timestamp}\", \"payload\" => \"#{upload_file}\"}"
+      response = sqs_queue.send_message({queue_url: queue_url, message_body: sqs_message})
       puts response
-      puts sqs_message.inspect
+      puts sqs_message
     end
 
     def upload_file
@@ -24,7 +25,7 @@ module Sqsender
       local_path = File.expand_path('../../upload', __dir__)
       local_file = File.join(local_path, filename)
 
-      timestamp = Time.current.iso8601.gsub(/[^0-9a-z ]/i, "")
+      timestamp = Time.current.strftime('%Y%m%dT%H%M%SZ')
       remote_path = File.join("bbcw_nls", "zeus", timestamp, filename)
 
       obj = bucket.object(remote_path)
