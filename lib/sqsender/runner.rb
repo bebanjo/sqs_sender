@@ -10,7 +10,7 @@ module Sqsender
     end
 
     def run
-      sqs_message = {"id" => 5_184_843, "timestamp" => "2013-04-23T16:05:58Z", "payload" => upload_file }
+      sqs_message = {"id" => 5_555_555, "timestamp" => Time.current.strftime('%Y-%m-%dT%H:%M:%SZ'), "payload" => upload_file }
       response = sqs_queue.send_message({queue_url: queue_url, message_body: sqs_message.inspect})
       puts response
       puts sqs_message.inspect
