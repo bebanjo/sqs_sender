@@ -11,7 +11,7 @@ module Sqsender
 
     def run
       timestamp = Time.current.strftime('%Y-%m-%dT%H:%M:%SZ')
-      sqs_message = "{\"timestamp\" => \"#{timestamp}\", \"payload\" => \"#{upload_file}\"}"
+      sqs_message = "{\"timestamp\":\"#{timestamp}\",\"payload\":\"#{upload_file}\"}"
       response = sqs_queue.send_message({queue_url: queue_url, message_body: sqs_message})
       puts response
       puts sqs_message
@@ -30,6 +30,7 @@ module Sqsender
 
       obj = bucket.object(remote_path)
       obj.upload_file(local_file)
+      sleep(10) # just in case, for be sure that upload is finished
       @upload_file = obj.public_url.to_s
     end
   end
