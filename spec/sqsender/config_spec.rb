@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Emaa::Config do
+describe Sqsender::Config do
   describe 'options' do
     subject(:options) { described_class.instance.options }
 
