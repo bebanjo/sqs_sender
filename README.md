@@ -12,9 +12,9 @@ staging:
   queue_name: my_queue_name
 ```
 
-and a file `example.xml` on the `upload` folder, run the process using this command:
+and a file `example.xlsx` on the `upload` folder, run the process using this command:
 
 ```
-ENV=staging bin/run example.yml
+ENV=staging bin/run example.xlsx
 ```
 
